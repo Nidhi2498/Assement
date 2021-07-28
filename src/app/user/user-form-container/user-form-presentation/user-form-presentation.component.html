@@ -1,0 +1,73 @@
+<div class="container">
+    <form class="row" [formGroup]="userForm">
+        <div class="col-md-9">
+            <label for="i" class="form-label" >Id: </label>
+            <input type="text" class="form-control" formControlName="id">
+        </div>
+        
+        <div class="col-md-9">
+            <label for="firstname" class="form-label">FirstName: </label>
+            <input type="text" class="form-control" formControlName="firstname">
+        </div>
+        <span class="text-danger"
+            *ngIf="(userDetailFormControl.firstname.touched || submitted) && userDetailFormControl.firstname.errors?.required">
+            Please enter FirstName
+        </span>
+
+        <div class="col-md-9">
+            <label for="lastname" class="form-label">LastName: </label>
+            <input type="text" class="form-control" formControlName="lastname">
+        </div>
+        <span class="text-danger"
+            *ngIf="(userDetailFormControl.lastname.touched || submitted) && userDetailFormControl.lastname.errors?.required">
+            Please enter LastName
+        </span>
+
+        <div class="col-md-9">
+            <label for="clientname" class="form-label">ClientName: </label>
+            <input type="text" class="form-control" formControlName="clientname">
+        </div>
+        <span class="text-danger"
+            *ngIf="(userDetailFormControl.clientname.touched || submitted) && userDetailFormControl.clientname.errors?.required">
+            Please enter clientname 
+        </span>
+
+        <div class="col-md-9">
+            <label for="email" class="form-label">Email: </label>
+            <input type="text" class="form-control" formControlName="email">
+        </div>
+        <span class="text-danger"
+            *ngIf="(userDetailFormControl.email.touched || submitted) && userDetailFormControl.email.errors?.required">
+            Please enter clientname 
+        </span>
+
+        <div class="col-md-9">
+            <label for="clientname" class="form-label">Office: </label>
+            <select type="text" class="form-control" formControlName="office">
+                <option>Office1</option>
+                <option>Office2</option>
+                <option>Office3</option>
+            </select>
+        </div>
+        <span class="text-danger"
+            *ngIf="(userDetailFormControl.clientname.touched || submitted) && userDetailFormControl.clientname.errors?.required">
+            Please select clientname 
+        </span>
+
+        <div class="col-md-9">
+            <label for="contactnumber" class="form-label">Contact Number: </label>
+            <input type="text" class="form-control" formControlName="contactnumber" appPhonemask>
+        </div>
+        <span class="text-danger"
+            *ngIf="(userDetailFormControl.contactnumber.touched || submitted) && userDetailFormControl.contactnumber.errors?.required">
+            Please enter contactnumber 
+        </span>
+
+        <div class="col-9">
+        <button class="btn btn-primary" type="submit" 
+            (click)="onSubmit()">Submit</button>
+        <input class="btn btn-primary" type="reset" value="Clear">
+    </div>
+
+</form>
+</div>

@@ -1,0 +1,51 @@
+<div>
+    <button class="btn btn-outline-danger m-1" data-toggle="tooltip" data-placement="right" title="add"
+        routerLink='add' >
+        Add Details
+    </button> 
+    <!-- <div class="form-group mb-4">
+        <label>Search</label>
+        <input class="form-control" type="text" [(ngModel)]="searchText" placeholder="Search">
+    </div> -->
+
+    <table class="table table-border">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>FirstName</th>
+                <th>LastName</th>
+                <th>ClientName</th>
+                <th>Email</th>
+                <th>Office</th>
+                <th>ContactNumber</th>
+             
+            </tr>
+        </thead>
+        <!-- search: searchText; let i = index -->
+        <tbody *ngFor="let userdetail of userListData ">
+            <tr>
+                <td> {{userdetail.id}} </td>
+                <td> {{userdetail.firstname}} </td>
+                <td> {{userdetail.lastname}} </td>
+                <td> {{userdetail.clientname}} </td>
+                <td> {{userdetail.email}}</td>
+                <td> {{userdetail.office}} </td>
+                <td> {{userdetail.contactnumber}} </td>                
+                <td class="text-center">
+                    <button class="btn btn-outline-primary m-1" data-toggle="tooltip" data-placement="right"
+                        title="Edit" (click)="getUserById(userdetail.id)">
+                        <!-- routerLink="['/customer/add/']+userdetail.id" -->
+                        Edit
+                    </button>
+
+                    <button class="btn btn-outline-danger m-1" data-toggle="tooltip" data-placement="right"
+                        title="Delete" (click)="deleteUserDetail(userdetail.id)">
+                        Delete
+                    </button>
+            </tr>
+        </tbody>
+    </table>
+    <ng-template #noResults>
+        <p>No results found for "{{searchText}}".</p>
+    </ng-template>
+</div>
