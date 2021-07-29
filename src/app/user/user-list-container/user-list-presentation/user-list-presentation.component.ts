@@ -15,7 +15,13 @@ import { UserListPresenterService } from '../user-list-presenter/user-list-prese
 export class UserListPresentationComponent implements OnInit {
   //declare variable for searching 
   searchText!: string;
+  userId!: User[];
   
+  
+    currentPage = 1;
+    itemsPerPage = 5;
+    pageSize!: number;
+
   //Set the value of user
   @Input() public set userListData(value: User[]){
     if(value){
@@ -49,8 +55,8 @@ export class UserListPresentationComponent implements OnInit {
 
   //Call User from User presenter service
   public getUserById(id:number){
-    this.userPresenterService.getUserDetailById(id);
-    this.router.navigateByUrl('add');
+    debugger
+    this.router.navigate(['/add',id]);
   }
 
   //Call this method from User presenter service
@@ -63,4 +69,11 @@ export class UserListPresentationComponent implements OnInit {
     //this.dialog.open(DialogelementComponent);
   }
 
+  public onPageChange(pageNum: number): void {
+    this.pageSize = this.itemsPerPage*(pageNum - 1);
+  }
+  
+  public changePagesize(num: number): void {
+  this.itemsPerPage = this.pageSize + num;
+  }
 }

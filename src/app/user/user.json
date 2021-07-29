@@ -17,15 +17,6 @@
       "email": "jinal@gmail.com",
       "office": "Office2",
       "contactnumber": "9033804363"
-    },
-    {
-      "id": "3",
-      "firstname": "Hetal",
-      "lastname": "Tandel",
-      "clientname": "Amazon",
-      "email": "hetalTandel@outllook.com",
-      "office": "Office3",
-      "contactnumber": "9099045632"
     }
   ]
 }

@@ -42,6 +42,7 @@ export class UserListPresenterService {
 
   //Get User details by Id
   public getUserDetailById(id: number){
+    debugger
     return this.userService.geteditUserDetailbyId(id).subscribe((data:any)=>{
         this.user = data;
     })

@@ -29,8 +29,7 @@ import { PhonemaskDirective } from './phonemask.directive';
     UserRoutingModule,
     ReactiveFormsModule,
     FormsModule,
-    HttpClientModule,
-    //MatDialogModule
+    HttpClientModule
   ],
   providers: [UserService]
 })
