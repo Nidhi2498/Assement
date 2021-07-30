@@ -12,7 +12,7 @@ import { UserService } from './user.service';
 import { HttpClientModule } from '@angular/common/http';
 import { SearchPipe } from './pipe/search.pipe';
 import { PhonemaskDirective } from './phonemask.directive';
-// import { MatDialogModule } from '@angular/material/dialog';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -29,7 +29,8 @@ import { PhonemaskDirective } from './phonemask.directive';
     UserRoutingModule,
     ReactiveFormsModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    NgbModule
   ],
   providers: [UserService]
 })

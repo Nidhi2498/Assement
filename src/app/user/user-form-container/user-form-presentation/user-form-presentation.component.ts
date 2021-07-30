@@ -20,21 +20,27 @@ export class UserFormPresentationComponent implements OnInit {
   public userForm: FormGroup = this.userPresenterService.bindForm();
 
   constructor(public userPresenterService:UserFormPresenterService, 
-    private router:ActivatedRoute, private userService:UserService) { }
+    private route:ActivatedRoute, private userService:UserService) { }
 
   ngOnInit(): void {
-    debugger
+
     this.userPresenterService.userDetail$.subscribe((userData : any) =>{
       this.userList.emit(userData)
     })
 
-    this.router.paramMap.subscribe((params : any) =>{
+    this.route.paramMap.subscribe((params : any) =>{
       const userId = +params.get('id');
       if(userId){
-        this.userService.geteditUserDetailbyId(userId).subscribe((user: User)=>
-            this.editUser(user), (err:any) => console.log(err)
-        )}
-      })
+        this.getAllUsers(userId)
+      }
+    })
+  }
+
+  getAllUsers(id:number){
+    this.userService.geteditUserDetailbyId(id).subscribe(
+      (userId:User)=> this.editUser(userId),
+      (err:any) => console.log(err)
+    )
   }
 
   editUser(user: User) {

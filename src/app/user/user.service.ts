@@ -1,11 +1,16 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/internal/Observable';
+import { of } from 'rxjs/internal/observable/of';
+import { catchError } from 'rxjs/internal/operators/catchError';
+import { tap } from 'rxjs/internal/operators/tap';
 import { User } from './user.model';
 
 @Injectable()
 export class UserService {
   public baseURL = "http://localhost:3000/"
+  userList: any;
+  items : User[] = [];
   constructor(private httpClient: HttpClient) { }
 
   //Add the user
@@ -32,5 +37,21 @@ export class UserService {
   public deleteUserDetail(id:number):Observable<number>{
     return this.httpClient.delete<number>(`${this.baseURL}user/${id}`)
   } 
+
+  public getUser(){
+    let list = [];
+
+    for(let index=0; index<15; index++){
+      list.push({firstname:'john doe', email:'hojn456@gmail.com', random: Math.random()})
+    }
+    return list;
+  }
+
+  
+
+
+
+ 
+ 
  
 }

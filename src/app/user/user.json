@@ -17,6 +17,51 @@
       "email": "jinal@gmail.com",
       "office": "Office2",
       "contactnumber": "9033804363"
+    },
+    {
+      "id": "3",
+      "firstname": "Mahika",
+      "lastname": "Kansara",
+      "clientname": "Apple",
+      "email": "mahikak123@gmail.com",
+      "office": "Office3",
+      "contactnumber": "9002321144"
+    },
+    {
+      "id": "4",
+      "firstname": "John",
+      "lastname": "Doe",
+      "clientname": "Apple",
+      "email": "john@gmail.com",
+      "office": "Office1",
+      "contactnumber": "9099556633"
+    },
+    {
+      "id": "5",
+      "firstname": "Blaise ",
+      "lastname": "Pascal",
+      "clientname": "Apple",
+      "email": "blaise121@gmail.com",
+      "office": "Office2",
+      "contactnumber": "9099996600"
+    },
+    {
+      "id": "6",
+      "firstname": "Albert ",
+      "lastname": "Einstein",
+      "clientname": "BTJ ",
+      "email": "albert.einstein@outlook.com",
+      "office": "Office3",
+      "contactnumber": "9066663333"
+    },
+    {
+      "id": "7",
+      "firstname": "Edward",
+      "lastname": "Abrahman",
+      "clientname": "BTJ",
+      "email": "edwardAb@gmail.com",
+      "office": "Office2",
+      "contactnumber": "9800224451"
     }
   ]
 }

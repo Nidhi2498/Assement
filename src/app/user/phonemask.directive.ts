@@ -36,7 +36,6 @@ export class PhonemaskDirective {
       newVal = newVal.replace(/^(\d{0,3})(\d{0,3})(\d{0,4})/, '($1) ($2)-$3');
     }
     this.ngControl.valueAccessor?.writeValue(newVal);
-    // this.ngControl.valueAccessor.writeValue(newVal);
   }
 
 }

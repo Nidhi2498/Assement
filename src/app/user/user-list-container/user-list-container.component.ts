@@ -27,6 +27,4 @@ export class UserListContainerComponent implements OnInit {
     this.userService.deleteUserDetail(id);
     this.location.back();
   }
-
-
 }

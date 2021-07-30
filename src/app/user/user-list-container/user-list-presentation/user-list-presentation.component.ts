@@ -1,9 +1,11 @@
 import { ChangeDetectionStrategy, Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
+import { Subject } from 'rxjs/internal/Subject';
 import { User } from '../../user.model';
+import { UserService } from '../../user.service';
 import { UserListPresenterService } from '../user-list-presenter/user-list-presenter.service';
-// import {MatDialog} from '@angular/material/dialog';
+
 
 @Component({
   selector: 'app-user-list-presentation',
@@ -16,11 +18,19 @@ export class UserListPresentationComponent implements OnInit {
   //declare variable for searching 
   searchText!: string;
   userId!: User[];
-  
-  
-    currentPage = 1;
-    itemsPerPage = 5;
-    pageSize!: number;
+  private destroy: Subject<void> = new Subject();
+
+  //Pagination
+  public page = 1;
+  public pageSize = 10;
+  public userList: any = [];
+  addbutton: any;
+  search: any;
+
+  //sorting
+  records: any[] = [];
+  isDesc: boolean = true;
+  column: string = 'firstname';
 
   //Set the value of user
   @Input() public set userListData(value: User[]){
@@ -40,23 +50,27 @@ export class UserListPresentationComponent implements OnInit {
   private _userListData : User[] = [];
   public userGroup!: FormGroup;
   
-  constructor(private userPresenterService:UserListPresenterService, public router:Router)
+  constructor(private userPresenterService:UserListPresenterService, public _router:Router,
+    private userService : UserService)
     //public dialog: MatDialog) 
    {
     this.userListData = [];
     this.userGroup = this.userPresenterService.bindForm();
+
+    
    }
 
   ngOnInit(): void {
     this.userPresenterService.userListId$.subscribe((userListId:any)=>{
       this.deleteUserById.emit(userListId);
     })
+
   }
 
   //Call User from User presenter service
   public getUserById(id:number){
     debugger
-    this.router.navigate(['/add',id]);
+    this._router.navigate(['add',id]);
   }
 
   //Call this method from User presenter service
@@ -64,16 +78,26 @@ export class UserListPresentationComponent implements OnInit {
     this.userPresenterService.deleteUserDetail(id);
   }
 
-  //Open dialog
-  public openDialog(){
-    //this.dialog.open(DialogelementComponent);
-  }
-
-  public onPageChange(pageNum: number): void {
-    this.pageSize = this.itemsPerPage*(pageNum - 1);
-  }
   
-  public changePagesize(num: number): void {
-  this.itemsPerPage = this.pageSize + num;
-  }
+
+
+  sort(property:any) {
+    debugger
+    this.isDesc = !this.isDesc; //change the direction    
+    this.column = property;
+    let direction = this.isDesc ? 1 : -1;
+
+    this.records.sort(function (a, b) {
+      if (a[property] < b[property]) {
+        return -1 * direction;
+      }
+      else if (a[property] > b[property]) {
+        return 1 * direction;
+      }
+      else {
+        return 0;
+      }
+    });
+  };
+
 }

@@ -8,6 +8,7 @@ const routes: Routes = [
   { 
     path: '', 
     component: UserComponent,
+    pathMatch: 'full',
     children: [
       {
         path:'',
@@ -16,6 +17,7 @@ const routes: Routes = [
       {
         path:'add', 
         component: UserFormContainerComponent
+        
       },
       {
         path:'add/id',

@@ -22,7 +22,7 @@ export class UserFormPresenterService {
       clientname: new FormControl('', Validators.required),
       email : new FormControl('', Validators.email),
       office: new FormControl(''),
-      contactnumber: new FormControl('', Validators.required),
+      contactnumber: new FormControl('', Validators.pattern("^((\\+91-?)|0)?[0-9]{10}$")),
      })
   }
   // [Validators.required, Validators.pattern('[a-zA-Z ]*')]
@@ -31,7 +31,6 @@ export class UserFormPresenterService {
   public userDetailData(userForm: FormGroup){
     if(userForm.valid) {
       this.userDetail.next(userForm.value)
-      console.log(this.userDetail);
     }else{}
   }
 }
