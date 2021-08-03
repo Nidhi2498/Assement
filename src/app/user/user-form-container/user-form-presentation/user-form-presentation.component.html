@@ -12,38 +12,41 @@
                 <div class="col-md-4 col-xs-12">
                     <label for="firstname" class="form-label">FirstName: </label>
                     <input type="text" class="form-control" formControlName="firstname">
-                </div>
-                <span class="text-danger"
+                    <span class="text-danger"
                     *ngIf="(userDetailFormControl.firstname.touched || submitted) && userDetailFormControl.firstname.errors?.required">
                     Please enter FirstName
                 </span>
+                </div>
+               
 
                 <div class="col-md-4 col-xs-12">
                     <label for="lastname" class="form-label">LastName: </label>
                     <input type="text" class="form-control" formControlName="lastname">
-                </div>
-                <span class="text-danger"
-                    *ngIf="(userDetailFormControl.lastname.touched || submitted) && userDetailFormControl.lastname.errors?.required">
+                    <span class="text-danger" *ngIf="(userDetailFormControl.lastname.touched || submitted) && userDetailFormControl.lastname.errors?.required">
                     Please enter LastName
                 </span>
+                </div>
+                
 
                 <div class="col-md-4 col-xs-12">
                     <label for="clientname" class="form-label">ClientName: </label>
                     <input type="text" class="form-control" formControlName="clientname">
-                </div>
-                <span class="text-danger"
+                    <span class="text-danger"
                     *ngIf="(userDetailFormControl.clientname.touched || submitted) && userDetailFormControl.clientname.errors?.required">
                     Please enter clientname 
                 </span>
+                </div>
+               
 
                 <div class="col-md-4 col-xs-12">
                     <label for="email" class="form-label">Email: </label>
                     <input type="text" class="form-control" formControlName="email">
-                </div>
-                <span class="text-danger"
+                    <span class="text-danger"
                     *ngIf="(userDetailFormControl.email.touched || submitted) && userDetailFormControl.email.errors?.required">
                     Please enter clientname 
                 </span>
+                </div>
+               
 
                 <div class="col-md-4 col-xs-12">
                     <label for="clientname" class="form-label">Office: </label>
@@ -52,29 +55,29 @@
                         <option>Office2</option>
                         <option>Office3</option>
                     </select>
-                </div>
-                <span class="text-danger"
+                    <span class="text-danger"
                     *ngIf="(userDetailFormControl.clientname.touched || submitted) && userDetailFormControl.clientname.errors?.required">
                     Please select clientname 
                 </span>
+                </div>
+                
 
                 <div class="col-md-4 col-xs-12">
                     <label for="contactnumber" class="form-label">Contact Number: </label>
-                    <input type="text" class="form-control" formControlName="contactnumber" >
+                    <input type="text" class="form-control" formControlName="contactnumber">
+                    <span *ngIf="userDetailFormControl.contactnumber.touched && userDetailFormControl.contactnumber.invalid" class="alert alert-danger">
+                        <div *ngIf="userDetailFormControl.contactnumber.errors?.required">Mobile Number is required.</div>
+                        <div *ngIf="userDetailFormControl.contactnumber.errors?.pattern">Please, Enter 10 digit Mobile Number.</div>
+                    </span>
                 </div>
-                <span *ngIf="userDetailFormControl.contactnumber.touched && userDetailFormControl.contactnumber.invalid" class="alert alert-danger">
-                    <div *ngIf="userDetailFormControl.contactnumber.errors?.required">Mobile Number is required.</div>
-                    <div *ngIf="userDetailFormControl.contactnumber.errors?.pattern">Please, Enter 10 digit Mobile Number.</div>
-                </span>
+                
 
                 <div class="col-9">
                 <button class="btn btn-primary" type="submit" 
                     (click)="onSubmit()">Submit</button>
                 <input class="btn btn-primary" type="reset" value="Clear">
             </div>
-
         </form>
-       
         </div>
     </div>
 </div>

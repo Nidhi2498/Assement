@@ -28,12 +28,12 @@ export class UserFormPresentationComponent implements OnInit {
       this.userList.emit(userData)
     })
 
-    this.route.paramMap.subscribe((params : any) =>{
-      const userId = +params.get('id');
-      if(userId){
-        this.getAllUsers(userId)
-      }
-    })
+    // this.route.paramMap.subscribe((params : any) =>{
+    //   const userId = +params.get('id');
+    //   if(userId){
+    //     this.getAllUsers(userId)
+    //   }
+    // })
   }
 
   getAllUsers(id:number){

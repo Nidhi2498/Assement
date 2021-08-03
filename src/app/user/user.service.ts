@@ -38,20 +38,8 @@ export class UserService {
     return this.httpClient.delete<number>(`${this.baseURL}user/${id}`)
   } 
 
-  public getUser(){
-    let list = [];
-
-    for(let index=0; index<15; index++){
-      list.push({firstname:'john doe', email:'hojn456@gmail.com', random: Math.random()})
-    }
-    return list;
+  public getUser(pageno : number){
+    return this.httpClient.get(`${this.baseURL}?page=`+ pageno + '&limit=6')
   }
 
-  
-
-
-
- 
- 
- 
 }

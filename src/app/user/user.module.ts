@@ -13,6 +13,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { SearchPipe } from './pipe/search.pipe';
 import { PhonemaskDirective } from './phonemask.directive';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { OrderModule } from 'ngx-order-pipe';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 @NgModule({
   declarations: [
@@ -30,7 +32,9 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     ReactiveFormsModule,
     FormsModule,
     HttpClientModule,
-    NgbModule
+    NgbModule,
+    OrderModule,
+    NgxPaginationModule
   ],
   providers: [UserService]
 })

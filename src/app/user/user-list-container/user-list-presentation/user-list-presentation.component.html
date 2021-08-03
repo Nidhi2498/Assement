@@ -8,23 +8,70 @@
     <div class="col-md-4" align="left">
         <input type="text"  class="form-control" name="clientname" placeholder="Search..."
          [(ngModel)]= "searchText">
-
     </div>
 
+   
     <table class="table table-border">
         <thead>
             <tr>
-                <th>Id</th>
-                <th class="pointer" (click)="sort('firstname')">FirstName</th>
-                <th>LastName</th>
-                <th>ClientName</th>
-                <th>Email</th>
+                <th class="pointer" (click)="sortList('id')">Id
+                    <span *ngIf="key === 'id'">
+                        <span *ngIf="reverse">
+                            <i class="fa fa-caret-up" aria-hidden="true"></i>
+                        </span>
+                        <span *ngIf="!reverse">
+                          <i class="fa fa-caret-down" aria-hidden="true"></i>
+                        </span>
+                      </span>
+                </th>
+
+                <th class="pointer" (click)="sortList('firstname')">FirstName
+                    <span *ngIf="key === 'firstname'">
+                        <span *ngIf="reverse">
+                            <i class="fa fa-caret-up" aria-hidden="true"></i>
+                        </span>
+                        <span *ngIf="!reverse">
+                          <i class="fa fa-caret-down" aria-hidden="true"></i>
+                        </span>
+                      </span>
+                </th>
+                <th class="pointer" (click)="sortList('lastname')">LastName
+                    <span *ngIf="key === 'lastname'">
+                        <span *ngIf="reverse">
+                            <i class="fa fa-caret-up" aria-hidden="true"></i>
+                        </span>
+                        <span *ngIf="!reverse">
+                          <i class="fa fa-caret-down" aria-hidden="true"></i>
+                        </span>
+                      </span>
+                </th>
+                <th class="pointer" (click)="sortList('clientname')">ClientName
+                    <span *ngIf="key === 'clientname'">
+                        <span *ngIf="reverse">
+                            <i class="fa fa-caret-up" aria-hidden="true"></i>
+                        </span>
+                        <span *ngIf="!reverse">
+                          <i class="fa fa-caret-down" aria-hidden="true"></i>
+                        </span>
+                      </span>
+                </th>
+                <th class="pointer" (click)="sortList('email')">Email
+                    <span *ngIf="key === 'email'">
+                        <span *ngIf="reverse">
+                            <i class="fa fa-caret-up" aria-hidden="true"></i>
+                        </span>
+                        <span *ngIf="!reverse">
+                          <i class="fa fa-caret-down" aria-hidden="true"></i>
+                        </span>
+                      </span>
+                </th>
                 <th>Office</th>
                 <th>ContactNumber</th>
+                <th>Action</th>
             </tr>
         </thead>
-        <tbody *ngFor= "let userdetail of userListData | slice: (page-1) * pageSize : (page-1) * pageSize + pageSize | 
-        searchClientname : searchText ">
+        <tbody *ngFor= "let userdetail of userListData | searchClientname : searchText | orderBy: key : reverse 
+        | paginate: { itemsPerPage: 10, currentPage: 1 } ">
             <tr>
                 <td> {{userdetail.id}} </td>
                 <td> {{userdetail.firstname}} </td>
@@ -34,6 +81,12 @@
                 <td> {{userdetail.office}} </td>
                 <td> {{userdetail.contactnumber}} </td>                
                 <td class="text-center">
+                    <!-- <i class="far fa-ellipsis"></i>
+                    <select class="far fa-ellipsis" appearance="fill">
+                        <option><i class="far fa-ellipsis"></i>Edit</option>
+                        <option>Delete</option>
+                    </select> -->
+
                     <button class="btn btn-success m-1" data-toggle="tooltip" data-placement="right"
                         title="Edit" (click)="getUserById(userdetail.id)">
                         Edit
@@ -46,14 +99,12 @@
             </tr>
         </tbody>
     </table>
-    <ngb-pagination class="d-flex justify-content-center"
-    [(page)]="page"
-    [pageSize]="pageSize"
-    [collectionSize]="userListData.length">
-</ngb-pagination>
-    <ng-template #noResults>
-        <p>No results found for "{{searchText}}".</p>
-    </ng-template>
+    <nav aria-label="Page navigation example">
+        <ul class="pagination">
+          <li class="page-item"><a class="page-link" href="#">Previous</a></li>
+          <li class="page-item"><a class="page-link" href="#">Next</a></li>
+        </ul>
+      </nav>
 </div>
 
 
