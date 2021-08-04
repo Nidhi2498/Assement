@@ -14,64 +14,31 @@
     <table class="table table-border">
         <thead>
             <tr>
-                <th class="pointer" (click)="sortList('id')">Id
-                    <span *ngIf="key === 'id'">
-                        <span *ngIf="reverse">
-                            <i class="fa fa-caret-up" aria-hidden="true"></i>
-                        </span>
-                        <span *ngIf="!reverse">
-                          <i class="fa fa-caret-down" aria-hidden="true"></i>
-                        </span>
-                      </span>
+                <th class="pointer" (click)="sortList('id')">Id&nbsp;
+                    <i class="fa fa-sort"></i>
                 </th>
 
-                <th class="pointer" (click)="sortList('firstname')">FirstName
-                    <span *ngIf="key === 'firstname'">
-                        <span *ngIf="reverse">
-                            <i class="fa fa-caret-up" aria-hidden="true"></i>
-                        </span>
-                        <span *ngIf="!reverse">
-                          <i class="fa fa-caret-down" aria-hidden="true"></i>
-                        </span>
-                      </span>
+                <th class="pointer" (click)="sortList('firstname')">FirstName&nbsp;
+                    <i class="fa fa-sort"></i>
                 </th>
-                <th class="pointer" (click)="sortList('lastname')">LastName
-                    <span *ngIf="key === 'lastname'">
-                        <span *ngIf="reverse">
-                            <i class="fa fa-caret-up" aria-hidden="true"></i>
-                        </span>
-                        <span *ngIf="!reverse">
-                          <i class="fa fa-caret-down" aria-hidden="true"></i>
-                        </span>
-                      </span>
+                <th class="pointer" (click)="sortList('lastname')">LastName&nbsp;
+                    <i class="fa fa-sort"></i>
                 </th>
-                <th class="pointer" (click)="sortList('clientname')">ClientName
-                    <span *ngIf="key === 'clientname'">
-                        <span *ngIf="reverse">
-                            <i class="fa fa-caret-up" aria-hidden="true"></i>
-                        </span>
-                        <span *ngIf="!reverse">
-                          <i class="fa fa-caret-down" aria-hidden="true"></i>
-                        </span>
-                      </span>
+                <th class="pointer" (click)="sortList('clientname')">ClientName&nbsp;
+                    <i class="fa fa-sort"></i>
                 </th>
-                <th class="pointer" (click)="sortList('email')">Email
-                    <span *ngIf="key === 'email'">
-                        <span *ngIf="reverse">
-                            <i class="fa fa-caret-up" aria-hidden="true"></i>
-                        </span>
-                        <span *ngIf="!reverse">
-                          <i class="fa fa-caret-down" aria-hidden="true"></i>
-                        </span>
-                      </span>
+                <th class="pointer" (click)="sortList('email')">Email&nbsp;
+                    <i class="fa fa-sort"></i>
                 </th>
-                <th>Office</th>
-                <th>ContactNumber</th>
+                <th class="pointer" (click)="sortList('office')">Office&nbsp;
+                    <i class="fa fa-sort"></i></th>
+                <th class="pointer" (click)="sortList('contactnumber')">ContactNumber&nbsp;
+                    <i class="fa fa-sort"></i></th>
                 <th>Action</th>
             </tr>
         </thead>
         <tbody *ngFor= "let userdetail of userListData | searchClientname : searchText | orderBy: key : reverse 
-        | paginate: { itemsPerPage: 10, currentPage: 1 } ">
+        | paginate: { itemsPerPage: 5, currentPage: p } ">
             <tr>
                 <td> {{userdetail.id}} </td>
                 <td> {{userdetail.firstname}} </td>
@@ -88,7 +55,7 @@
                     </select> -->
 
                     <button class="btn btn-success m-1" data-toggle="tooltip" data-placement="right"
-                        title="Edit" (click)="getUserById(userdetail.id)">
+                        title="Edit" (click)="getUserById(userdetail.id)" >
                         Edit
                     </button>
 
@@ -99,12 +66,21 @@
             </tr>
         </tbody>
     </table>
-    <nav aria-label="Page navigation example">
-        <ul class="pagination">
-          <li class="page-item"><a class="page-link" href="#">Previous</a></li>
-          <li class="page-item"><a class="page-link" href="#">Next</a></li>
-        </ul>
-      </nav>
+    <pagination-controls (pageChange)="p = $event"></pagination-controls>
 </div>
+
+
+    <!-- <nav aria-label="Page navigation example">
+        <ul class="pagination">
+          <li class="page-item"><a class="page-link" (click)="pagination.onFirst()">First</a></li>
+          <li class="page-item"><a class="page-link" (click)="pagination.onPrevious()">Previous</a></li>
+          <input #pagination="pagination" [totalPages]="5" (onChangeEventEmitter)="onPageChange($event)"
+                appPagination type="number" min="1" max="5" value="1">
+          <li class="page-item"><a class="page-link" (click)="pagination.onNext()">Next</a></li>
+          <li class="page-item"><a class="page-link" (click)="pagination.onLast()">Last</a></li>
+        </ul>
+      </nav> -->
+
+    
 
 

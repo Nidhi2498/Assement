@@ -39,7 +39,7 @@ export class UserService {
   } 
 
   public getUser(pageno : number){
-    return this.httpClient.get(`${this.baseURL}?page=`+ pageno + '&limit=6')
+    return this.httpClient.get(`${this.baseURL}?page=`+ pageno + '&limit=5')
   }
 
 }

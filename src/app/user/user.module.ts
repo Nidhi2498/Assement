@@ -15,6 +15,7 @@ import { PhonemaskDirective } from './phonemask.directive';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { OrderModule } from 'ngx-order-pipe';
 import { NgxPaginationModule } from 'ngx-pagination';
+import { PaginationDirective } from './pipe/pagination.directive';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { NgxPaginationModule } from 'ngx-pagination';
     UserFormPresentationComponent,
     UserListPresentationComponent,
     SearchPipe,
-    PhonemaskDirective
+    PhonemaskDirective,
+    PaginationDirective
   ],
   imports: [
     CommonModule,

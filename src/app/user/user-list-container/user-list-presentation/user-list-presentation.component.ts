@@ -1,6 +1,7 @@
 import { ChangeDetectionStrategy, Component, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
+import { Observable } from 'rxjs/internal/Observable';
 import { Subject } from 'rxjs/internal/Subject';
 import { User } from '../../user.model';
 import { UserService } from '../../user.service';
@@ -18,13 +19,14 @@ export class UserListPresentationComponent implements OnInit {
   //declare variable for searching 
   searchText!: string;
   private destroy: Subject<void> = new Subject();
-
+  p!:number;
+  counter : number = +1;
 
   //Set the value of user
   @Input() public set userListData(value: User[]){
     if(value){
       this._userListData = value
-      
+      //console.log(value.length);
     }
   }
 
@@ -39,9 +41,7 @@ export class UserListPresentationComponent implements OnInit {
   private _userListData : User[] = [];
   public userGroup!: FormGroup;
   
-  //Pagination
-  // public data:any = [];
-  // public users!: User[];
+  public usersList!: Observable<any>
 
   constructor(private userPresenterService:UserListPresenterService, public _router:Router,
     private userService : UserService)
@@ -50,11 +50,7 @@ export class UserListPresentationComponent implements OnInit {
     this.userListData = [];
     this.userGroup = this.userPresenterService.bindForm();
 
-    // for(let key in this.data.user){
-    //   if(this.users.hasOwnProperty(key)){
-    //       this.data.push(this.data.users[key]);
-    //   }
-    // }
+    this.usersList = this.userService.getUser(1);
    }
 
   ngOnInit(): void {
@@ -66,7 +62,8 @@ export class UserListPresentationComponent implements OnInit {
 
   //Call User from User presenter service
   public getUserById(id:number){
-    this._router.navigate(['add',id]);
+    debugger
+    this._router.navigate([`../users/add/${id}`,]);
   }
 
   //Call this method from User presenter service
@@ -81,5 +78,15 @@ export class UserListPresentationComponent implements OnInit {
      this.key = key;
      this.reverse = !this.reverse;
    }  
+
+
+   public getUserdetail(list:any){
+     list = this.userService.getUserDetail();
+   }
+
+   //pagination
+   public onPageChange(pageno:number){
+    return this.getUserdetail(pageno);
+  }
   
 }

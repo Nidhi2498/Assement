@@ -28,31 +28,25 @@ export class UserFormPresentationComponent implements OnInit {
       this.userList.emit(userData)
     })
 
-    // this.route.paramMap.subscribe((params : any) =>{
-    //   const userId = +params.get('id');
-    //   if(userId){
-    //     this.getAllUsers(userId)
-    //   }
-    // })
+    this.route.paramMap.subscribe((params : any) =>{
+      const userId = +params.get('id');
+      if(userId){
+        this.getAllUsers(userId)
+      }
+    })
   }
 
-  getAllUsers(id:number){
+
+  public getAllUsers(id:number){
     this.userService.geteditUserDetailbyId(id).subscribe(
       (userId:User)=> this.editUser(userId),
       (err:any) => console.log(err)
     )
   }
 
-  editUser(user: User) {
-    this.userForm.patchValue({
-      id: user.id,
-      firstname : user.firstname,
-      lastname : user.lastname,
-      clientname: user.clientname,
-      email: user.email,
-      office : user.office,
-      contactnumber : user.contactnumber,
-    })
+  //patch the user 
+  public editUser(user: User) {
+    this.userForm.patchValue(user)
   }
 
   get userDetailFormControl(){

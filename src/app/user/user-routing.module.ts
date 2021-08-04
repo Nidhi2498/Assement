@@ -17,11 +17,11 @@ const routes: Routes = [
         path:'add', 
         component: UserFormContainerComponent
         
+      },
+      {
+        path:'add/:id',
+        component:UserFormContainerComponent
       }
-      // {
-      //   path:'add/id',
-      //   component:UserFormContainerComponent
-      // }
     ]
   }
 ];

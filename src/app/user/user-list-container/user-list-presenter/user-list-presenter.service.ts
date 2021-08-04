@@ -37,12 +37,12 @@ export class UserListPresenterService {
    public loadUserDetail(){
     return this.userService.getUserDetail().subscribe((data:any)=>{
       this.user = data;
+      
     })
   }
 
   //Get User details by Id
   public getUserDetailById(id: number){
-    debugger
     return this.userService.geteditUserDetailbyId(id).subscribe((data:any)=>{
         this.user = data;
     })

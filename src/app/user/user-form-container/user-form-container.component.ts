@@ -27,7 +27,13 @@ export class UserFormContainerComponent implements OnInit {
       this.userService.getUserDetail();
       this.location.back();
     })
-    console.log(user);
+  }
+
+  public updateUserDetail(user: User){
+    this.userService.updateUserDetail(user).subscribe((data:User)=>{
+      this.userService.getUserDetail();
+      this.location.back();
+    })
   }
 
 }
