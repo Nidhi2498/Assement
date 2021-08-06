@@ -4,19 +4,21 @@
       "id": 1,
       "firstname": "Nidhi",
       "lastname": "Kansara",
-      "clientname": "Apple",
+      "clientname": "BTJ",
       "email": "nidhi@gmail.com",
-      "office": "office1",
-      "contactnumber": 9856232145
+      "office": "Office3",
+      "contactnumber": 9856232145,
+      "dob": "1992-07-24"
     },
     {
       "id": 2,
-      "firstname": "Siya",
-      "lastname": "Patel",
+      "firstname": "Alex",
+      "lastname": "Carry",
       "clientname": "Apple",
-      "email": "siyap@gmail.com",
-      "office": "office1",
-      "contactnumber": 9898777745
+      "email": "alex.carry@gmail.com",
+      "office": "Office2",
+      "contactnumber": 9898777745,
+      "dob": "2002-02-21"
     },
     {
       "id": "3",
@@ -24,17 +26,19 @@
       "lastname": "Kansara",
       "clientname": "Apple",
       "email": "mahikak123@gmail.com",
-      "office": "Office3",
-      "contactnumber": "9002321144"
+      "office": "Office1",
+      "contactnumber": "9002321144",
+      "dob": "2001-03-02"
     },
     {
       "id": "4",
       "firstname": "John",
       "lastname": "Doe",
-      "clientname": "Apple",
+      "clientname": "HP",
       "email": "john@gmail.com",
       "office": "Office1",
-      "contactnumber": "9099556633"
+      "contactnumber": "9099556633",
+      "dob": "1996-01-14"
     },
     {
       "id": "5",
@@ -43,7 +47,8 @@
       "clientname": "Apple",
       "email": "blaise121@gmail.com",
       "office": "Office2",
-      "contactnumber": "9099996600"
+      "contactnumber": "9099996600",
+      "dob": "1993-09-20"
     },
     {
       "id": "6",
@@ -52,16 +57,18 @@
       "clientname": "BTJ ",
       "email": "albert.einstein@outlook.com",
       "office": "Office3",
-      "contactnumber": "9066663333"
+      "contactnumber": "9066663333",
+      "dob": "1997-06-17"
     },
     {
       "id": "7",
       "firstname": "Edward",
       "lastname": "Abrahman",
-      "clientname": "BTJ",
+      "clientname": "IBM",
       "email": "edwardAb@gmail.com",
       "office": "Office2",
-      "contactnumber": "9800224451"
+      "contactnumber": "9800224451",
+      "dob": "1994-11-09"
     }
   ]
 }

@@ -23,6 +23,7 @@ export class UserFormPresenterService {
       email : new FormControl('', Validators.email),
       office: new FormControl(''),
       contactnumber: new FormControl('', Validators.pattern("^((\\+91-?)|0)?[0-9]{10}$")),
+      dob: new FormControl(''),
      })
   }
   // [Validators.required, Validators.pattern('[a-zA-Z ]*')]

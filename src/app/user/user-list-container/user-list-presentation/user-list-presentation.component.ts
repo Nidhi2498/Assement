@@ -1,7 +1,7 @@
+import { HttpClient } from '@angular/common/http';
 import { ChangeDetectionStrategy, Component, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
 import { FormGroup } from '@angular/forms';
-import { Router } from '@angular/router';
-import { Observable } from 'rxjs/internal/Observable';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Subject } from 'rxjs/internal/Subject';
 import { User } from '../../user.model';
 import { UserService } from '../../user.service';
@@ -20,7 +20,6 @@ export class UserListPresentationComponent implements OnInit {
   searchText!: string;
   private destroy: Subject<void> = new Subject();
   p!:number;
-  counter : number = +1;
 
   //Set the value of user
   @Input() public set userListData(value: User[]){
@@ -41,23 +40,28 @@ export class UserListPresentationComponent implements OnInit {
   private _userListData : User[] = [];
   public userGroup!: FormGroup;
   
-  public usersList!: Observable<any>
+  public usersList!: any;
 
   constructor(private userPresenterService:UserListPresenterService, public _router:Router,
-    private userService : UserService)
-    //public dialog: MatDialog) 
+    private userService : UserService, private http:HttpClient, private route:ActivatedRoute)
+  
    {
     this.userListData = [];
     this.userGroup = this.userPresenterService.bindForm();
-
-    this.usersList = this.userService.getUser(1);
+    this.getUserdata();
    }
 
   ngOnInit(): void {
     this.userPresenterService.userListId$.subscribe((userListId:any)=>{
       this.deleteUserById.emit(userListId);
     })
-   
+
+    this.route.paramMap.subscribe((params : any) =>{
+      const userId = +params.get('id');
+      if(userId){
+        this.getUserdata();
+      }
+    })
   }
 
   //Call User from User presenter service
@@ -69,6 +73,7 @@ export class UserListPresentationComponent implements OnInit {
   //Call this method from User presenter service
   public deleteUserDetail(id:number){
     this.userPresenterService.deleteUserDetail(id);
+    this.getUserdata();
   }
 
    // sorting as per every field
@@ -80,13 +85,14 @@ export class UserListPresentationComponent implements OnInit {
    }  
 
 
-   public getUserdetail(list:any){
-     list = this.userService.getUserDetail();
+   data: any= [];
+   public getUserdata(){
+     this.userService.getUserDetail().subscribe(
+       (data:any)=> {this.data = data}
+     )
    }
 
-   //pagination
-   public onPageChange(pageno:number){
-    return this.getUserdetail(pageno);
-  }
+
+ 
   
 }

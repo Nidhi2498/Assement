@@ -38,8 +38,9 @@ export class UserService {
     return this.httpClient.delete<number>(`${this.baseURL}user/${id}`)
   } 
 
-  public getUser(pageno : number){
-    return this.httpClient.get(`${this.baseURL}?page=`+ pageno + '&limit=5')
-  }
+  // public getUser(pageno : number){
+  //   return this.httpClient.get(`${this.baseURL}?page=`+ pageno + '&limit=5')
+  // }
 
+  
 }

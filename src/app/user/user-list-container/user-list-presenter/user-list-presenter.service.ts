@@ -30,6 +30,7 @@ export class UserListPresenterService {
       email : new FormControl(),
       office: new FormControl(),
       contactnumber: new FormControl(),
+      dob: new FormControl(),
      })
    }
 

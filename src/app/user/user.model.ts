@@ -6,4 +6,5 @@ export class User {
     email!:string;
     office!: string;
     contactnumber!:number;
+    dob!:string;
 }
